@@ -65,6 +65,11 @@ module.exports = (driver) ->
     else
       driver.navigateTo(url)
 
+    # the webdriver host:port is implementation detail noise
+    if url.indexOf(@rootUrl) == 0
+      url = url.slice @rootUrl.length
+    url
+
   refresh: ->
     driver.refresh()
 
